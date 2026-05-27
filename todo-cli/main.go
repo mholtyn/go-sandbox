@@ -58,9 +58,7 @@ func (t *TodoList) List() {
 			fmt.Printf("[ ] %d. %s\n", task.ID, task.Title)
 		}
 	}
-	return
 }
-
 
 // TODO: zdefiniuj sentinel error ErrNotFound
 var ErrNotFound = errors.New("Not found")
