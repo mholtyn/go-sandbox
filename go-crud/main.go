@@ -2,12 +2,23 @@ package main
 
 import (
 	"net/http"
+	"log"
 
 	"github.com/labstack/echo/v5"
 	"github.com/labstack/echo/v5/middleware"
+	"github.com/joho/godotenv"
+
+	mydb "go-crud/db"
 )
 
 func main() {
+	godotenv.Load()
+
+	_, err := mydb.Connect()
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	app := echo.New()
 	app.Use(middleware.RequestLogger())
 
