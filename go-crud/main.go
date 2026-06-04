@@ -15,6 +15,7 @@ import (
 func main() {
 	godotenv.Load()
 
+	log.Println("connecting...")
 	db, err := mydb.Connect()
 	if err != nil {
 		log.Fatal(err)
