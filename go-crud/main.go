@@ -10,6 +10,7 @@ import (
 
 	mydb "go-crud/db"
 	"go-crud/handler"
+	"go-crud/store"
 )
 
 func main() {
@@ -21,7 +22,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	taskHandler := handler.NewTaskHandler(db)
+	taskStore := store.NewTaskStore(db)
+	taskHandler := handler.NewTaskHandler(taskStore)
 
 	app := echo.New()
 	app.Use(middleware.RequestLogger())
